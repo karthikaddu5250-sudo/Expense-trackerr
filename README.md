@@ -57,6 +57,15 @@ mvn spring-boot:run
 
 Never commit a real `.env` file; it is ignored by Git.
 
+## Deploy the Vercel frontend with a Java backend
+
+Vercel serves the static browser files but does **not** run this Spring Boot application. Deploy the Java backend to a Java/Docker host (for example Render), configure its MySQL and `CORS_ALLOWED_ORIGINS` environment variables, and set the frontend API address.
+
+1. Create a MySQL database and deploy this repository to Render using `render.yaml`.
+2. In Render, set `DB_HOST`, `DB_NAME`, `DB_USERNAME`, `DB_PASSWORD`, and `CORS_ALLOWED_ORIGINS` to your Vercel domain (for example `https://expense-trackerr.vercel.app`).
+3. In `src/main/resources/static/api-config.js`, set `window.EXPENSE_API_BASE_URL` to the public Render service URL, for example `https://expense-tracker-api.onrender.com`.
+4. Deploy the frontend to Vercel again. The Add Transaction form will then call the live API rather than the missing `/api` endpoint.
+
 ## API quick reference
 
 | Method | Endpoint | Purpose |
