@@ -4,4 +4,4 @@
  * of the deployed Spring Boot API, with no trailing slash.
  * Example: window.EXPENSE_API_BASE_URL = "https://expense-api.onrender.com";
  */
-window.EXPENSE_API_BASE_URL = "https://your-backend-url.onrender.com";
+window.EXPENSE_API_BASE_URL = "";
